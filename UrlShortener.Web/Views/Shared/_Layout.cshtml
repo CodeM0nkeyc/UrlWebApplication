@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-beasties-container>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <base href="@(ViewData["BaseHref"] ?? '/')"/>
+        <title>@ViewData["Title"]</title>
+        <link rel="stylesheet" href="css/style.css" />
+        @await RenderSectionAsync("Resources", false)
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a class="nav-link" asp-controller="About" asp-action="Index">About</a>
+
+                @if (User.Identity is not null && User.Identity.IsAuthenticated)
+                {
+                    <a class="nav-link" asp-controller="Auth" asp-action="Logout">Logout</a>
+                }
+                else
+                {
+                    <a class="nav-link" asp-controller="Auth" asp-action="Index">Login</a>
+                }
+            </nav>
+        </header>
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Url Shortener</p>
+        </footer>
+
+        @await RenderSectionAsync("Scripts", false)
+    </body>
+</html>

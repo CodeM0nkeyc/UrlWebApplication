@@ -1,0 +1,27 @@
+﻿services:
+  web:
+    image: urlshortener.web
+    build:
+      context: .
+      dockerfile: UrlShortener.Web/Dockerfile
+    container_name: urlshotener
+    ports:
+      - "5000:80"
+    depends_on:
+      - mssql
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__UrlShortenerDb: "Server=mssql,1433;Database=UrlShortenerDb;User Id=sa;Password=UrlDbP@ssword_7153;Encrypt=True;TrustServerCertificate=True;"
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssql2019
+    ports:
+      - "1434:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "UrlDbP@ssword_7153"
+    volumes:
+      - mssql_db:/var/opt/mssql
+
+volumes:
+  mssql_db:

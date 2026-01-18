@@ -1,0 +1,37 @@
+:host {
+  position: fixed;
+  left: 1rem;
+  bottom: 5rem;
+  display: block;
+}
+
+.error {
+  width: 100%;
+  max-width: 50rem;
+  padding: 1rem 2rem;
+  color: #fff;
+  background-color: #D52618CC;
+  border-radius: 3px;
+
+  &-close-btn {
+    position: absolute;
+    top: -2px;
+    right: 2px;
+    width: auto;
+    padding: 0;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    font-weight: 700;
+
+    &:hover {
+      color: #ccc;
+    }
+  }
+
+  &-message {
+    font-size: 1.7rem;
+    overflow-wrap: break-word;
+  }
+}

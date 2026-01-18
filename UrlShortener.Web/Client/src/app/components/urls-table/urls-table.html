@@ -1,0 +1,39 @@
+<h1>Short URLs</h1>
+
+<ul class="table" (click)="isAuthenticated ? onRemoveAsync($event) : null">
+  <li class="table-header">Long URL</li>
+  <li class="table-header">Short URL</li>
+
+  @for (urlData of urlsData().values(); track urlData.id) {
+    <li class="table-cell">
+      <a target="_blank" rel="noopener noreferrer" href="{{ urlData.longValue }}">{{ urlData.longValue }}</a>
+    </li>
+    <li class="table-cell">
+      <a target="_blank" rel="noopener noreferrer"
+         href="{{ hostUrl + urlData.shortValue }}">{{ hostUrl + urlData.shortValue }}</a>
+      @if (isAuthenticated) {
+        <div class="btn-container">
+          @if (urlData.isOwner) {
+            <button class="square-btn" [attr.data-url-id]="urlData.id">
+              <i class="icon-basic-trashcan"></i>
+            </button>
+          }
+          <a [routerLink]="['/', urlData.id]" class="square-btn">
+            <i class="icon-basic-eye look-icon"></i>
+          </a>
+        </div>
+      }
+    </li>
+  } @empty {
+    <li class="table-cell">There can be your long url</li>
+    <li class="table-cell">And short url</li>
+  }
+
+  @if (isAuthenticated) {
+    <a routerLink="/new" class="square-btn add-btn"></a>
+  }
+</ul>
+
+@if (isAuthenticated) {
+  <router-outlet></router-outlet>
+}

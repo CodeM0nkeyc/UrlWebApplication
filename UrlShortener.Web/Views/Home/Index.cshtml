@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["BaseHref"] = "/home";
+}
+
+@section Resources {
+    <link rel="stylesheet" href="angular/browser/styles.css" media="print" onload="this.media='all'" />
+    
+    <noscript>
+        <link rel="stylesheet" href="angular/browser/styles.css" />
+    </noscript>
+}
+
+<urls-root></urls-root>
+
+@section Scripts {
+    <script src="angular/browser/main.js" type="module"></script>
+}

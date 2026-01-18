@@ -1,0 +1,23 @@
+@let url = urlData()!;
+
+@if (url) {
+  <div class="details-container" animate.enter="appear-animation">
+    <h1>URL Info</h1>
+    <ul class="details-list">
+      <li class="details-item">Id - {{ url.id }}</li>
+      <li class="details-item">
+        Long value - <a href="{{ url.longValue }}">{{ url.longValue }}</a>
+      </li>
+      <li class="details-item">
+        Short value - <a target="_blank" rel="noopener noreferrer"
+                         href="{{ hostUrl + url.shortValue }}">{{ hostUrl + url.shortValue }}</a>
+      </li>
+      <li class="details-item">Resource type - {{ url.resourceType ? url.resourceType : "Unspecified" }}</li>
+      <li class="details-item">Created by {{ url.createdBy.firstName }} {{ url.createdBy.lastName}}</li>
+      <li class="details-item">Created on {{ url.createdDate | date:"medium" }}</li>
+    </ul>
+    <a routerLink="/" class="square-btn">
+      <i class="icon-basic-eye-closed close-icon"></i>
+    </a>
+  </div>
+}

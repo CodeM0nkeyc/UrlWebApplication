@@ -1,0 +1,36 @@
+﻿@model AboutVm
+@{
+    ViewData["Title"] = "About";
+    var isAdmin = (User.FindFirst(ClaimTypes.Role)?.Value ?? "") == "Admin";
+}
+
+@section Resources {
+    <link rel="stylesheet" href="css/pages/about.css" asp-append-version="true"/>
+}
+
+<form class="about-container" asp-action="UpdateAboutSection">
+    <textarea class="inline-editor heading" asp-for="Title" disabled="@(!isAdmin)">@Model.Title</textarea>
+
+    <section class="about-section">
+        <textarea class="inline-editor text" asp-for="Text" disabled="@(!isAdmin)">@Model.Text</textarea>
+        @if (isAdmin)
+        {
+            <button class="about-save-btn" type="submit">Save</button>
+        }
+    </section>
+</form>
+
+@section Scripts
+{
+    <script>
+        function autoResize(el) {
+            el.style.height = "auto";
+            el.style.height = el.scrollHeight + "px";
+        }
+    
+        document.querySelectorAll("textarea.inline-editor").forEach(textarea => {
+            autoResize(textarea);
+            textarea.addEventListener("input", () => autoResize(textarea));
+        });
+    </script>
+}

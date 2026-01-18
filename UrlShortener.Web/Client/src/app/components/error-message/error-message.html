@@ -1,0 +1,8 @@
+@if (opened()) {
+  <div class="error" animate.enter="appear-animation">
+    <button (click)="onClose($event)" class="error-close-btn">×</button>
+    <p class="error-message">
+      {{ error() }}
+    </p>
+  </div>
+}

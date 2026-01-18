@@ -1,0 +1,6 @@
+<div class="form-container" animate.enter="appear-animation">
+  <label for="urlInput">URL</label>
+  <input id="urlInput" type="text" class="form-input" [(ngModel)]="url" />
+  <button (click)="onAddAsync($event)">Add</button>
+  <a routerLink="/" class="cancel-btn">Cancel</a>
+</div>

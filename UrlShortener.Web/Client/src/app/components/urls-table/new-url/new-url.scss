@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form-container {
+  width: 50%;
+  height: fit-content;
+  max-width: 50rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  padding: 2rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  color: #333;
+
+  & > button {
+    width: auto;
+  }
+}
+
+.form-input {
+  flex: 1;
+}
+
+.cancel-btn {
+  display: block;
+}
