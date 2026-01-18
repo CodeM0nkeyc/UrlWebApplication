@@ -17,6 +17,7 @@ public class AboutController : Controller
         return View(aboutVm);
     }
 
+    [Authorize(Roles = nameof(Role.Admin))]
     [HttpPost]
     public async Task<IActionResult> UpdateAboutSection(AboutVm aboutVm)
     {
