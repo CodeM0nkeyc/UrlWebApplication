@@ -84,10 +84,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\angular\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
