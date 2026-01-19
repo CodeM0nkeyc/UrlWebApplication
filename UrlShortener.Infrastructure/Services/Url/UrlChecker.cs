@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace UrlShortener.Infrastructure.Services.Url;
+﻿namespace UrlShortener.Infrastructure.Services.Url;
 
 public class UrlChecker : IUrlChecker, IDisposable
 {
@@ -11,12 +9,22 @@ public class UrlChecker : IUrlChecker, IDisposable
     public UrlChecker()
     {
         _httpClient = new HttpClient();
+        _httpClient.Timeout = TimeSpan.FromSeconds(5);
     }
     
     public async Task<UrlCheckData> CheckUrlAsync(string url)
     {
         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Head, url);
-        HttpResponseMessage response = await _httpClient.SendAsync(request);
+        HttpResponseMessage response;
+
+        try
+        {
+            response = await _httpClient.SendAsync(request);
+        }
+        catch (HttpRequestException ex)
+        {
+            return new UrlCheckData(false, null);
+        }
         
         string contentType = response.Content.Headers.ContentType?.MediaType ?? "";
 

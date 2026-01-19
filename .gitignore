@@ -56,7 +56,7 @@ dlldata.c
 
 .DS_STORE
 
-/angular/
+angular/
 
 /dist/
 /bazel-out
