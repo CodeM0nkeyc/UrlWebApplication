@@ -21,7 +21,7 @@ public class NoUrlDataIdSpoofingHandler : AuthorizationHandler<NoUrlDataIdSpoofi
         }
 
         int userId = int.Parse(context.User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-        bool isOwner = await _urlDbContext.Urls.AnyAsync(x => x.OwnerId == userId);
+        bool isOwner = await _urlDbContext.Urls.AnyAsync(x => x.Id == id && x.OwnerId == userId);
 
         if (context.User.HasClaim(ClaimTypes.Role, nameof(Role.Admin)) || isOwner)
         {

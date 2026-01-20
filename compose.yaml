@@ -4,7 +4,7 @@
     build:
       context: .
       dockerfile: UrlShortener.Web/Dockerfile
-    container_name: urlshotener
+    container_name: urlshortener
     ports:
       - "5000:80"
     depends_on:
@@ -13,8 +13,8 @@
       ASPNETCORE_ENVIRONMENT: Production
       ConnectionStrings__UrlShortenerDb: "Server=mssql,1433;Database=UrlShortenerDb;User Id=sa;Password=UrlDbP@ssword_7153;Encrypt=True;TrustServerCertificate=True;"
   mssql:
-    image: mcr.microsoft.com/mssql/server:2019-latest
-    container_name: mssql2019
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql2022
     ports:
       - "1434:1433"
     environment:
